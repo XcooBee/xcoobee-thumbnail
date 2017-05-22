@@ -1,5 +1,10 @@
 # Thumbnail class
 
+## TODO
+Describe multiple size target format
+25x25
+70x70
+
 ## Description:
 
 The thumbnail class is a helper class that abstracts the use of the imagemagic binary. The objective is to generate thumbnails from provided images. The default thumbnail size is 25x25 pixels.
