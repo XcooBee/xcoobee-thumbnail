@@ -1,0 +1,35 @@
+{
+  "name": "xcoobee-thumbnail",
+  "version": "1.0.0",
+  "description": "Helper package that uses ImageMagick to generate thumbnail images",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha -- test/*.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XcooBee/xcoobee-thumbnail.git"
+  },
+  "keywords": [
+    "thubmnail"
+  ],
+  "author": "Vitaliy Boychyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/XcooBee/xcoobee-thumbnail/issues"
+  },
+  "homepage": "https://github.com/XcooBee/xcoobee-thumbnail#readme",
+  "dependencies": {
+    "file-type": "^4.3.0",
+    "imagemagick-composite": "^0.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "sinon": "^2.1.0"
+  }
+}
