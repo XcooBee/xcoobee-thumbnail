@@ -11,6 +11,8 @@ class Generator {
      * @param {String} inputPath
      * @param {String} outputPath
      * @returns {Promise}
+     *
+     * @memberof Generator
      */
     static generateThumb(targetHeight, targetWidth, inputPath, outputPath) {
         return new Promise((resolve, reject) => {
@@ -25,8 +27,8 @@ class Generator {
                         return Promise.reject("Only image with single frame can be used.");
                     }
 
-                    // If image's height/width are less then target we return original path
-                    if (parseInt(width, 10) <= targetWidth || parseInt(height, 10) <= targetHeight) {
+                    // If image's height and width are less then target we return original path
+                    if (parseInt(width, 10) <= targetWidth && parseInt(height, 10) <= targetHeight) {
                         return Promise.resolve(inputPath);
                     }
 
@@ -36,7 +38,7 @@ class Generator {
                     // Converting
                     return Generator.processImConvert(convertArgs)
                         .then(() => {
-                            // Collecting converted image params
+                            // Collecting converted image's params
                             return Generator.processImIdentify(outputPath, "%w ");
                         })
                         .then((processedIdentifyOutput) => {
@@ -48,10 +50,15 @@ class Generator {
                                 convertArgs = [outputPath, "-shave", `${shaveValue}x0`, outputPath];
                                 return Generator.processImConvert(convertArgs);
                             }
+
+                            return Promise.resolve(outputPath);
+                        })
+                        .then(() => {
+                            return Promise.resolve(outputPath);
                         });
                 })
                 .then((path) => {
-                    return resolve(null, path);
+                    return resolve(path);
                 })
                 .catch((err) => {
                     return reject(err);
