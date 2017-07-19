@@ -33,7 +33,7 @@ class Generator {
                     }
 
                     // Composing convert arguments
-                    let convertArgs = [inputPath, "-thumbnail", `x${targetHeight}`, "-strip", outputPath];
+                    let convertArgs = [inputPath, "-synchronize", "-thumbnail", `x${targetHeight}`, "-strip", outputPath];
 
                     // Converting
                     return Generator.processImConvert(convertArgs)
@@ -47,7 +47,7 @@ class Generator {
                             // If converted image has more width than required - remove equal amount of pixels on both sides
                             if (parseInt(processedWidth, 10) > targetWidth) {
                                 const shaveValue = Math.ceil((processedWidth - targetHeight) / 2);
-                                convertArgs = [outputPath, "-shave", `${shaveValue}x0`, outputPath];
+                                convertArgs = [outputPath, "-synchronize", "-shave", `${shaveValue}x0`, outputPath];
                                 return Generator.processImConvert(convertArgs);
                             }
 
